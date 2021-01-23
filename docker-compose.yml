@@ -1,0 +1,14 @@
+version: "3"
+
+services: 
+  db:
+    image: devderas/mysql-4-python:latest
+    command: --default-authentication-plugin=mysql_native_password
+
+  app:
+    build: ./app/
+    depends_on: 
+      - db
+    command: ["/usr/src/app/wait-for-mysql.sh", "db", "python", "dbConnect.py", "db", "python", "keepAlive.py"]
+
+
