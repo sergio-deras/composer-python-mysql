@@ -1,6 +1,5 @@
 import sys
-import os
-import time
+import mysql.connector
 
 hostname = sys.argv[1]
 username = 'root'
@@ -16,8 +15,6 @@ def doQuery( conn ) :
 
 
 print("Using mysql.connector")
-
-import mysql.connector
 myConnection = mysql.connector.connect (host=hostname, user=username, passwd=password, db=database)
 doQuery(myConnection)
 myConnection.close()
